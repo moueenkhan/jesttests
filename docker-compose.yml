@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  jest:
+    image: node:14
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: npm test
+    environment:
+      - BASE_URL=https://09fb-154-81-229-40.ngrok-free.app  # Use host.docker.internal for Docker on Mac/Windows
+    networks:
+      - e2e-network
+
+networks:
+  e2e-network:
+    driver: bridge
